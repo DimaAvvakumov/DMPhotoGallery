@@ -48,6 +48,8 @@
 
 @property (assign, nonatomic) CGFloat lastRenderedWidth;
 
+@property (strong, nonatomic) NSString *imagePath;
+
 @end
 
 @implementation DMPhotoGalleryItemViewController
@@ -55,7 +57,32 @@
 - (id)initWithModel:(DMPhotoGalleryModel *)galleryItem andLazyLoad:(BOOL)lazyLoad {
     self = [super initWithNibName:@"DMPhotoGalleryItemViewController" bundle: nil];
     if (self) {
-        BOOL imageExist = [[NSFileManager defaultManager] fileExistsAtPath:galleryItem.imagePath];
+        NSString *imagePath = galleryItem.imagePath;
+        if (imagePath == nil) {
+            NSURL *imageURL = galleryItem.imageURL;
+            if (imageURL) {
+                NSString *localPath = [imageURL.path stringByReplacingOccurrencesOfString:@"://" withString:@"_"];
+                imagePath = [[NSFileManager defaultManager] pathForCacheFile:localPath];
+            }
+        }
+        self.imagePath = imagePath;
+        
+        BOOL imageExist;
+        
+        UIImage *originalImage = galleryItem.originalImage;
+        if (originalImage) {
+            imageExist = YES;
+            
+            self.storeImage = originalImage;
+            self.storeImageSize = originalImage.size;
+            
+            _imageView.alpha = 1.0;
+            _pieProgressView.alpha = 0.0;
+            
+            lazyLoad = YES;
+        } else {
+            imageExist = [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
+        }
         
         self.lazyLoad = !imageExist || lazyLoad;
         self.itemModel = galleryItem;
@@ -79,16 +106,7 @@
         
         DMPhotoGalleryItemViewController __weak *weakSelf = self;
         
-        NSString *imagePath = _itemModel.imagePath;
-        if (imagePath == nil) {
-            NSURL *imageURL = _itemModel.imageURL;
-            if (imageURL) {
-                NSString *localPath = [imageURL.path stringByReplacingOccurrencesOfString:@"://" withString:@"_"];
-                imagePath = [[NSFileManager defaultManager] pathForCacheFile:localPath];
-            }
-        }
-        
-        if (_lazyLoad) {
+        if (!originalImage && _lazyLoad) {
             DMImageOperation *operation = [[DMImageOperation alloc] initWithImagePath:imagePath identifer:nil andBlock:^(UIImage *image) {
                 
                 // store image
@@ -244,7 +262,7 @@
             [self setupImage: _storeImage];
         }
     } else {
-        UIImage *image = [UIImage imageWithContentsOfFile: _itemModel.imagePath];
+        UIImage *image = [UIImage imageWithContentsOfFile: _imagePath];
         if (image) {
             self.storeImage = image;
             self.storeImageSize = image.size;

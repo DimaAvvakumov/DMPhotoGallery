@@ -6,11 +6,13 @@
 //  Copyright (c) 2012 Dima Avvakumov. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface DMPhotoGalleryModel : NSObject
 
 @property (strong, nonatomic) NSString *text;
+
+@property (strong, nonatomic) UIImage *originalImage;
 
 @property (strong, nonatomic) NSString *imagePath;
 @property (strong, nonatomic) NSURL *imageURL;

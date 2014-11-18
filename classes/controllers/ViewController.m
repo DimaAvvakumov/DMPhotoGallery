@@ -50,10 +50,13 @@
 - (DMPhotoGalleryModel *) photoGalleryItemAtIndex: (NSInteger) index {
     
     NSString *imageUrlPath;
+    UIImage *image;
     
     switch (index) {
         case 1: {
-            imageUrlPath = @"http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10808438_830892580286829_451834347_n.jpg";
+            NSString *imagePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"first.jpg"];
+            image = [UIImage imageWithContentsOfFile:imagePath];
+            
             break;
         }
         case 2: {
@@ -64,6 +67,9 @@
             imageUrlPath = @"http://photos-c.ak.instagram.com/hphotos-ak-xpa1/10808894_1566935730186642_548560476_n.jpg";
             break;
         }
+        case 4: {
+            imageUrlPath = @"http://photos-f.ak.instagram.com/hphotos-ak-xpf1/10808438_830892580286829_451834347_n.jpg";
+        }
         default: {
             imageUrlPath = @"http://photos-d.ak.instagram.com/hphotos-ak-xpa1/10809716_1626328397594555_1895726818_n.jpg";
             
@@ -72,10 +78,12 @@
     }
     
     DMPhotoGalleryModel *model = [[DMPhotoGalleryModel alloc] init];
-    model.imagePath = nil;
-    model.imageURL = [NSURL URLWithString:imageUrlPath];
-    model.previewPath = nil;
-    model.previewURL = [NSURL URLWithString:imageUrlPath];
+    if (image) {
+        model.originalImage = image;
+    } else {
+        model.imagePath = nil;
+        model.imageURL = [NSURL URLWithString:imageUrlPath];
+    }
     
     return model;
 }

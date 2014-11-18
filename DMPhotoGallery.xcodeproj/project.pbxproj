@@ -24,6 +24,7 @@
 		188E52021A1B45DF00150489 /* DMImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E51FD1A1B45DF00150489 /* DMImageDownloadOperation.m */; };
 		188E52031A1B45DF00150489 /* DMImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E51FF1A1B45DF00150489 /* DMImageOperation.m */; };
 		188E52071A1B483700150489 /* DMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E52061A1B483700150489 /* DMProgressView.m */; };
+		188E521D1A1B575B00150489 /* first.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 188E521C1A1B575B00150489 /* first.jpg */; };
 		9DD25B9CCCCE0FC79E89E830 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9B6053383F15AA43E9FD5D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		188E51FF1A1B45DF00150489 /* DMImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageOperation.m; sourceTree = "<group>"; };
 		188E52051A1B483700150489 /* DMProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProgressView.h; sourceTree = "<group>"; };
 		188E52061A1B483700150489 /* DMProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProgressView.m; sourceTree = "<group>"; };
+		188E521C1A1B575B00150489 /* first.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = first.jpg; sourceTree = "<group>"; };
 		C27A07D20DB0B098D90D56C9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA880D183B0FE9A6C1F1E10B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EE9B6053383F15AA43E9FD5D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 			children = (
 				188E51CD1A1B406B00150489 /* app */,
 				188E51D01A1B406B00150489 /* controllers */,
+				188E521A1A1B575B00150489 /* images */,
 				188E51D31A1B406B00150489 /* Images.xcassets */,
 				188E51D41A1B406B00150489 /* resources */,
 				188E51F41A1B45DF00150489 /* vendors */,
@@ -209,6 +212,22 @@
 			path = DMProgressView;
 			sourceTree = "<group>";
 		};
+		188E521A1A1B575B00150489 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				188E521B1A1B575B00150489 /* 500px */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		188E521B1A1B575B00150489 /* 500px */ = {
+			isa = PBXGroup;
+			children = (
+				188E521C1A1B575B00150489 /* first.jpg */,
+			);
+			path = 500px;
+			sourceTree = "<group>";
+		};
 		835EFF5514495C365D7D1BEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188E521D1A1B575B00150489 /* first.jpg in Resources */,
 				188E51DF1A1B406B00150489 /* Main.storyboard in Resources */,
 				188E51DE1A1B406B00150489 /* LaunchScreen.xib in Resources */,
 				188E51F21A1B40C300150489 /* DMPhotoGalleryViewController.xib in Resources */,

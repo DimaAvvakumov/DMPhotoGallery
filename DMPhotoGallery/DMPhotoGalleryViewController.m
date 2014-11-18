@@ -58,7 +58,7 @@
     self = [super initWithNibName: @"DMPhotoGalleryViewController" bundle: nil];
     if (self) {
         [self baseInit];
-        
+                
         self.items = items;
         self.delegate = delegate;
         
