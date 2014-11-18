@@ -7,6 +7,7 @@
 //
 
 #import "DMPhotoGalleryPreviewView.h"
+#import "StandardPaths.h"
 
 #import "DMImageManager.h"
 
@@ -141,7 +142,16 @@
         [imageView addGestureRecognizer:gr];
         [imageView setAlpha: 0.0];
         
-        DMImageOperation *operation = [[DMImageOperation alloc] initWithImagePath:item.previewPath identifer:nil andBlock:^(UIImage *image) {
+        NSString *previewPath = item.previewPath;
+        if (previewPath == nil) {
+            NSURL *previewURL = item.previewURL;
+            if (previewURL) {
+                NSString *localPath = [previewURL.path stringByReplacingOccurrencesOfString:@"://" withString:@"_"];
+                previewPath = [[NSFileManager defaultManager] pathForCacheFile:localPath];
+            }
+        }
+        
+        DMImageOperation *operation = [[DMImageOperation alloc] initWithImagePath:previewPath identifer:nil andBlock:^(UIImage *image) {
             
             [imageView setImage: image];
             [UIView animateWithDuration:0.3 animations:^{

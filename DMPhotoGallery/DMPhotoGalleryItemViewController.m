@@ -10,7 +10,7 @@
 #import "StandardPaths.h"
 
 // vendors
-#import "DMProgressView.h"
+#import "M13ProgressViewRing.h"
 #import "DMImageManager.h"
 
 #define DMPhotoGalleryItemViewController_MaxScale 4.0
@@ -28,7 +28,7 @@
 @property (assign, nonatomic) CGSize storeImageSize;
 
 // IBOutlet progress view
-@property (weak, nonatomic) IBOutlet DMProgressView *pieProgressView;
+@property (weak, nonatomic) IBOutlet M13ProgressViewRing *pieProgressView;
 
 // IBOutlet scroll view
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -112,7 +112,7 @@
             [operation setProgressBlock:^(NSNumber *progress) {
                 if ([weakSelf isViewLoaded]) {
                     [_pieProgressView setHidden: NO];
-                    [_pieProgressView setProgress: [progress floatValue]];
+                    [_pieProgressView setProgress:[progress floatValue] animated:YES];
                 }
             }];
             [[DMImageManager defaultManager] addOperation: operation];
@@ -151,13 +151,13 @@
     [super viewDidLoad];
 
     // progress view
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-    _pieProgressView.progress = 0.0;
-    [_pieProgressView setLineWidth:5.0];
-    [_pieProgressView setLineColorStart:_mainColor end:[UIColor clearColor]];
-    [_pieProgressView showPercentWithFont:font andOffsetY:0.0];
+//    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    [_pieProgressView setProgress:0.0 animated:NO];
+//    [_pieProgressView setLineWidth:5.0];
+//    [_pieProgressView setLineColorStart:_mainColor end:[UIColor clearColor]];
+//    [_pieProgressView showPercentWithFont:font andOffsetY:0.0];
     _pieProgressView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
-    [_pieProgressView startAnimating];
+//    [_pieProgressView startAnimating];
     
     // bottom gradient
     _bottomGradient.image = [self bottomGradientImage];

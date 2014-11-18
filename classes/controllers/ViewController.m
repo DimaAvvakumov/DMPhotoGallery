@@ -74,6 +74,8 @@
     DMPhotoGalleryModel *model = [[DMPhotoGalleryModel alloc] init];
     model.imagePath = nil;
     model.imageURL = [NSURL URLWithString:imageUrlPath];
+    model.previewPath = nil;
+    model.previewURL = [NSURL URLWithString:imageUrlPath];
     
     return model;
 }

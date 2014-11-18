@@ -20,14 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - M13ProgressSuite (1.2.6)
   - StandardPaths (1.6.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3.1)
+  - M13ProgressSuite
   - StandardPaths
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  M13ProgressSuite: b31f7bf2ed7dfab339fcd490775515bbf4a78c08
   StandardPaths: 8e97f03d51e40364fa9f0160b729b9687044e914
 
 COCOAPODS: 0.34.4
