@@ -156,6 +156,9 @@
 //    [_pieProgressView setLineWidth:5.0];
 //    [_pieProgressView setLineColorStart:_mainColor end:[UIColor clearColor]];
 //    [_pieProgressView showPercentWithFont:font andOffsetY:0.0];
+    _pieProgressView.primaryColor = [UIColor whiteColor];
+    _pieProgressView.secondaryColor = [UIColor lightGrayColor];
+    _pieProgressView.showPercentage = YES;
     _pieProgressView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
 //    [_pieProgressView startAnimating];
     
